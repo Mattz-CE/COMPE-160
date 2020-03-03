@@ -2,7 +2,7 @@
 
 ### Introduction:
 
-    This Repo Stores codes written in different languages and Tools for SDSU Computer Engineer Class Activities. Anyone who found this repo may freely fork and construct a database for the class.
+>This Repo Stores codes written in different languages and Tools for SDSU Computer Engineer Class Activities. Anyone who found this repo may freely fork and construct a database for the class.
 
 -------
 
