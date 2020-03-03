@@ -26,4 +26,9 @@
 
      <div style="text-align:center"><img src="Resources/s.jpg" /></div>
 
----
+# Math Corner
+Mathematicaly equations are only available in VSCode with extensions.
+
+Function insert methods: \$ Function here \$
+
+$f(x) = 2x\pi$
