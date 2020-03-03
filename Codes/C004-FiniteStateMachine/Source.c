@@ -33,7 +33,7 @@ int seqcounts = 0;
 char state;
 int main()
 {
-
+	printf("\n\n\n");
 	while((state = getchar()) != EOF)
 	{
 		if(bb == 1, dd == 1)
@@ -82,5 +82,6 @@ int main()
 	}
 	printf("Sequence Counts: ");
 	printf("%d", seqcounts);
+	printf("\n\n\n");
 	return 0;
 }
