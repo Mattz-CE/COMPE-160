@@ -24,6 +24,6 @@
 2. Quarter Notes
 3. An [example](http://example.com).
 
-![Image](Resources/s.jpg "icon")
+<div style="text-align:center"><img src="Resources/s.jpg" /></div>
 
 ---
