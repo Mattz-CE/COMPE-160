@@ -32,3 +32,5 @@ Mathematicaly equations are only available in VSCode with extensions.
 Function insert methods: \$ Function here \$
 
 $f(x) = 2x\pi$
+
+$f(x)=4(x!)=\Sigma$
