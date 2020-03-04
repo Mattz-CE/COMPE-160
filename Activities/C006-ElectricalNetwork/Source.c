@@ -49,8 +49,14 @@ int dot_product(int v[], int u[], int n)
     return result;
 }
 
+
+int e[];
+
 int main ()
 {
+    for(int i = 0; i < 6; i++){
+        e[i] = b[i] - dot_product(a[i], u[i], 6);
+}
     printf("\n\n\n\n");
 	for(int i = 0; i < 6; i++)
 	{
@@ -64,3 +70,9 @@ int main ()
     printf("\n");
 	return 0;
 }
+
+
+
+
+
+
