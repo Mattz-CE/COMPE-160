@@ -41,7 +41,9 @@ int b[M] = {0, 12, 0, 0, 0, 0};
 int u[N] = {-1, 1, 0, 0};
 int e[M] = {2, 1, -1, 1, -1, 0};
 double c[M][M] = {0};
-double w[M]={.2, 1, -1, 1, -1, 0};
+double w[M] = {.2, 1, -1, 1, -1, 0};
+double at[M][N];
+double f[4] = {-2.2, 2.2, 0, 0};
 int dot_product(int v[], int u[], int n)
 {
 	int result = 0;
@@ -49,7 +51,6 @@ int dot_product(int v[], int u[], int n)
 		result += v[i] * u[i];
 	return result;
 }
-
 void amnout()
 {
 	for (int i = 0; i < 6; i++)
@@ -77,6 +78,10 @@ void emout()
 void dotproduct();
 void cmmout()
 {
+	for (int i = 1; i < 5; i++)
+	{
+			c[i][i] = 1;
+	}
 	c[0][0] = 0.1;
 	for (int i = 1; i < 5; i++)
 	{
@@ -86,9 +91,10 @@ void cmmout()
 	{
 		for (int j = 0; j < 6; j++)
 		{
-			printf("%lf    ", c[i][j]);
+			printf("%0.1lf:    ", c[i][j]);
 		}
 		{
+			printf("\n");
 			printf("\n");
 		}
 	}
@@ -99,21 +105,48 @@ void wout()
 	for (int i = 0; i < 6; i++)
 	{
 		//w[i] == dotproduct(c[i], w[i]);
-		printf("%lf\n", w[i]);
+		printf("%0.1lf\n", w[i]);
 	}
 	printf("\n");
 }
 
+void reverseA()
+{
+	
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 6; j++)
+		{
+			at[i][j] = a[j][i];
+			printf("%0.1lf    ", at[i][j]);
+		}
+
+			printf("\n");
+			printf("\n");
+	}
+			printf("\n");
+			printf("\n");
+}
+
+void functionf()
+{
+	//w[i] == dotproduct(at[i], w[i]);
+	for (int i = 0; i < 4; i++)
+	{
+		printf("%0.1lf   \n ", f[i]);
+	}
+	printf("\n\n");
+}
+
 int main()
 {
-	for (int i = 1; i < 5; i++)
-	{
-		c[i][i] = 1;
-	}
+
 	printf("\n\n\n\n");
 	amnout();
 	emout();
 	cmmout();
 	wout();
+	reverseA();
+	functionf();
 	return 0;
 }
