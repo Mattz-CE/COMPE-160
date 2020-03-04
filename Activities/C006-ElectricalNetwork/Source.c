@@ -40,7 +40,7 @@ int a[M][N] =
 {0, 0, -1, 1}};
 int b[M] = {0, 12, 0, 0, 0, 0};
 int u[N] = {-1, 1, 0, 0};
-
+int e[M] = {2, 1, -1, 1, -1, 0};
 int dot_product(int v[], int u[], int n)
 {
     int result = 0;
@@ -48,15 +48,8 @@ int dot_product(int v[], int u[], int n)
         result += v[i]*u[i];
     return result;
 }
-
-
-int e[];
-
 int main ()
 {
-    for(int i = 0; i < 6; i++){
-        e[i] = b[i] - dot_product(a[i], u[i], 6);
-}
     printf("\n\n\n\n");
 	for(int i = 0; i < 6; i++)
 	{
@@ -66,13 +59,10 @@ int main ()
 		}
         printf("\n");
 	}
-    printf("\n");
-    printf("\n");
+	
+	for(int i = 0; i < 6; i++){
+    printf("%d\n", e[i]);
+}
 	return 0;
 }
-
-
-
-
-
 
