@@ -41,6 +41,7 @@ int a[M][N] =
 int b[M] = {0, 12, 0, 0, 0, 0};
 int u[N] = {-1, 1, 0, 0};
 int e[M] = {2, 1, -1, 1, -1, 0};
+int C[M][M] = {0};
 int dot_product(int v[], int u[], int n)
 {
     int result = 0;
@@ -48,21 +49,37 @@ int dot_product(int v[], int u[], int n)
         result += v[i]*u[i];
     return result;
 }
+
+void amnout(){
+	for(int i = 0; i < 6; i++)
+	{
+		for(int j = 0; j < 4; j++)
+		{printf("%d    \n", a[i][j]);}
+	}
+}
+
+void emout(){
+	for(int i = 0; i < 6; i++){printf("%d\n", e[i]);}
+}
+
+void Cmmout(){
+	for(int i = 0; i < 6; i++)
+	{
+		for(int j = 0; j < 6; j++)
+		{printf("%d    \n", C[i][j]);}
+	}
+}
+
 int main ()
 {
     printf("\n\n\n\n");
-	for(int i = 0; i < 6; i++)
-	{
-	for(int j = 0; j < 4; j++)
-		{
-			printf("%d    ", a[i][j]);
-		}
-        printf("\n");
+	amnout();
+	emout();
+	for(int i = 1; i < 5; i++){
+		C[i][i] = 1
 	}
+	cmmout();
 	
-	for(int i = 0; i < 6; i++){
-    printf("%d\n", e[i]);
-}
 	return 0;
 }
 
