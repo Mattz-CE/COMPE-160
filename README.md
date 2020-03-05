@@ -34,3 +34,7 @@ Function insert methods: \$ Function here \$
 $f(x) = 2x\pi$
 
 $f(x)=4(x!)=\Sigma$
+
+# Note
+
+- Spacex
