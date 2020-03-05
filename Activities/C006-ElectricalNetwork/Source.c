@@ -10,13 +10,13 @@
 **       Lab TA:  Atieh Kashanis
 **     Due Date:  March 16nd, 2020
 **
-**  Description:
+**  Description:  Calculates current sources f from voltage drop array A[6][4].
 **
 **        Input:  None
 **
-**       Output:  The final value after recursive calculations
+**       Output:  The final set of value from 
 **
-**    Algorithm:
+**    Algorithm:  Using Dot product, the value of sets of voltage input will output as current sources f.
 **
 **      Caveats:
 **      Version:  1.0.0
@@ -39,10 +39,12 @@ int a[M][N] =
 	 {0, 0, -1, 1}};
 int b[M] = {0, 12, 0, 0, 0, 0};
 int u[N] = {-1, 1, 0, 0};
+
 int e[M] = {2, 1, -1, 1, -1, 0};
 double c[M][M] = {0};
-double w[M] = {.2, 1, -1, 1, -1, 0};
-double at[M][N];
+double w[M] = {0};
+// double w[M] = {.2, 1, -1, 1, -1, 0};
+double at[N][M];
 double f[4] = {-2.2, 2.2, 0, 0};
 int dot_product(int v[], int u[], int n)
 {
@@ -53,6 +55,7 @@ int dot_product(int v[], int u[], int n)
 }
 void amnout()
 {
+	printf("A[M][N] Array:\n");
 	for (int i = 0; i < 6; i++)
 	{
 		for (int j = 0; j < 4; j++)
@@ -70,23 +73,39 @@ void amnout()
 
 void emout()
 {
+	printf("Voltage Drops e[6]:\n");
+	int v = 0;
+	for (int i; i < M; i++)
+	{
+		for (int j; j < N; j++)
+		{
+			if (v < M)
+			{
+				e[v] += a[i][j] * u[j];
+			}
+		}
+		v++;
+	}
+
 	for (int i = 0; i < 6; i++)
 	{
 		printf("%d\n", e[i]);
-	}
+	}printf("\n");
 }
 void dotproduct();
 void cmmout()
 {
+	printf("C[M][M] Array:\n");
 	for (int i = 1; i < 5; i++)
 	{
-			c[i][i] = 1;
+		c[i][i] = 1;
 	}
 	c[0][0] = 0.1;
 	for (int i = 1; i < 6; i++)
 	{
 		c[i][i] = 1;
 	}
+
 	for (int i = 0; i < 6; i++)
 	{
 		for (int j = 0; j < 6; j++)
@@ -102,9 +121,22 @@ void cmmout()
 
 void wout()
 {
+	printf("Current w[M]:\n");
+	int v = 0;
+	for (int i; i < M; i++)
+	{
+		for (int j; j < M; j++)
+		{
+			if (v < M)
+			{
+				w[v] += c[i][j] * e[j];
+			}
+		}
+		v++;
+	} //w[i] == dotproduct(c[i], w[i]);
+
 	for (int i = 0; i < 6; i++)
 	{
-		//w[i] == dotproduct(c[i], w[i]);
 		printf("%0.1lf\n", w[i]);
 	}
 	printf("\n");
@@ -112,7 +144,7 @@ void wout()
 
 void reverseA()
 {
-	
+	printf("AT[N][M] Array:\n");
 	for (int i = 0; i < 4; i++)
 	{
 		for (int j = 0; j < 6; j++)
@@ -121,19 +153,32 @@ void reverseA()
 			printf("%0.1lf    ", at[i][j]);
 		}
 
-			printf("\n");
-			printf("\n");
+		printf("\n");
+		printf("\n");
 	}
-			printf("\n");
-			printf("\n");
+	printf("\n");
+	printf("\n");
 }
 
 void functionf()
 {
+	printf("Current source f[N]:\n");
+	int v = 0;
+	for (int i; i < N; i++)
+	{
+		for (int j; j < M; j++)
+		{
+			if (v < M)
+			{
+				f[v] += at[i][j] * w[j];
+			}
+		}
+		v++;
+	}
 	//w[i] == dotproduct(at[i], w[i]);
 	for (int i = 0; i < 4; i++)
 	{
-		printf("%0.1lf   \n ", f[i]);
+		printf("%0.1lf\n", f[i]);
 	}
 	printf("\n\n");
 }
