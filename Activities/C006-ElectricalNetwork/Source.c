@@ -44,7 +44,7 @@ double c[M][M] = {0};
 double w[M] = {0};
 // double w[M] = {.2, 1, -1, 1, -1, 0};
 double at[N][M];
-double f[4] = {-2.2, 2.2, 0, 0};
+double f[4] = {0};
 
 int dot_product(int v[], int u[], int n)
 {
@@ -59,16 +59,9 @@ void amnout()
 	for (int i = 0; i < 6; i++)
 	{
 		for (int j = 0; j < 4; j++)
-		{
-			printf("%d    ", a[i][j]);
-		}
-		{
+			printf("%2d    ", a[i][j]);
 			printf("\n");
-		}
-	}
-	{
-		printf("\n");
-	}
+	}printf("\n");
 }
 
 void emout()
@@ -78,16 +71,12 @@ void emout()
 	{
 		double dot = 0.0;
 		for (int j = 0; j < N; j++)
-		{
 			dot += a[i][j] * u[j];
-		}
 		e[i] = b[i] - dot;
 	}
 
 	for (int i = 0; i < 6; i++)
-	{
-		printf("%d\n", e[i]);
-	}
+		printf("%3d\n", e[i]);
 	printf("\n");
 }
 void cmmout()
@@ -96,26 +85,17 @@ void cmmout()
 	for (int i = 1; i < 6; i++)
 	{
 		c[i][i] = 1;
-	}//Initializatio for CMM array
+	} //Initialization for CMM array
 	c[0][0] = 0.1;
 	for (int i = 1; i < 6; i++)
-	{
-		c[i][i] = 1;
-	}//Initializatio for CMM array
-
+		c[i][i] = 1; //Initialization for CMM array
 	for (int i = 0; i < 6; i++)
 	{
 		for (int j = 0; j < 6; j++)
-		{
 			printf("%0.1lf:    ", c[i][j]);
-		}
-		{
-			printf("\n");
-			printf("\n");
-		}
+			printf("\n\n");
 	}
 }
-
 void wout()
 {
 	printf("Current w[M]:\n");
@@ -130,9 +110,7 @@ void wout()
 	} //w[i] == dotproduct(c[i], w[i]);
 
 	for (int i = 0; i < 6; i++)
-	{
-		printf("%0.1lf\n", w[i]);
-	}
+		printf("%4.1lf\n", w[i]);
 	printf("\n");
 }
 
@@ -144,52 +122,30 @@ void reverseA()
 		for (int j = 0; j < 6; j++)
 		{
 			at[i][j] = a[j][i];
-			printf("%0.1lf    ", at[i][j]);
+			printf("%7.4lf ", at[i][j]);
 		}
 		printf("\n");
-		printf("\n");
 	}
-	printf("\n");
-	printf("\n");
+	printf("\n\n");
 }
 
 void functionf()
 {
 	printf("Current source f[N]:\n");
-	// int v = 0;
-	// for (int i; i < N; i++)
-	// {
-	// 	for (int j; j < M; j++)
-	// 	{
-	// 		if (v < M)
-	// 		{
-	// 			f[v] += at[i][j] * w[j];
-	// 		}
-	// 	}
-	// 	v++;
-	// }
 
-for (int i = 0; i < N; i++)
+	for (int i = 0; i < N; i++)
 	{
 		double dot = 0.0;
 		for (int j = 0; j < M; j++)
-		{
 			dot += at[i][j] * w[j];
-		}
 		f[i] = dot;
 	}
-
-	//w[i] == dotproduct(at[i], w[i]);
 	for (int i = 0; i < 4; i++)
-	{
-		printf("%0.1lf\n", f[i]);
-	}
+		printf("%5.1lf\n", f[i]);
 	printf("\n\n");
 }
-
 int main()
 {
-
 	printf("\n\n\n\n");
 	amnout();
 	emout();
