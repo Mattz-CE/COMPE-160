@@ -83,7 +83,7 @@ void cmmout()
 			c[i][i] = 1;
 	}
 	c[0][0] = 0.1;
-	for (int i = 1; i < 5; i++)
+	for (int i = 1; i < 6; i++)
 	{
 		c[i][i] = 1;
 	}
