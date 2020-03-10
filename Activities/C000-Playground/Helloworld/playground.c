@@ -25,28 +25,13 @@
 */
 
 #include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
 int main()
 {
-	double e[6][6] = {0};
-	e[0][0] = 0.1;
-	for (int i = 1; i < 5; i++)
-	{
-		e[i][i] = 1;
-		{
-			printf("\n");
-		}
-	}
-	for (int i = 0; i < 6; i++)
-	{
-		for (int j = 0; j < 6; j++)
-		{
-			printf("%lf    ", e[i][j]);
-		}
-		{
-			printf("\n");
-		}
-	}
-
-	return 0;
+    printf("%d", time(0));
+    return 0;
 }
