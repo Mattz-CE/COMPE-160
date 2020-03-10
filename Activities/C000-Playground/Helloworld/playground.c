@@ -7,58 +7,67 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <string.h>
 #define N 7200
-#define Cap 200
 
-int a[N] = {0};
+typedef enum {true, false} bool;
 
-
-
-void freq()
-{
-    int answer;
-    int rating;
-    int frequency[Cap] = {0};
-    for (answer = 0; answer < N; answer++)
-        ++frequency[a[answer]];
-    printf("%s%17s\n", "Rating", "Frequency");
-
-    for (rating = 1; rating < Cap + 1; rating++)
-        printf("%6d%17d\n", rating, frequency[rating]);
-        //Range for the frequencies
-    for (int i = 0 ; i < Cap + 1 ; i++)
-    {
-        int temp = 0;
-        if (a[i] > temp)
-        {
-            
-        }
-    }
-}
-
-void sort()
-{
-    srand(time(0));
-    for (int i = 0; i < N; i++)
-        a[i] = 1 + rand() % Cap;
-    for (int pass = 1; pass < N; ++pass)
-        for (int i = 0; i < N - pass; ++i)
-            if (a[i] > a[i + 1])
-            {
-                int hold = a[i];
-                a[i] = a[i + 1];
-                a[i + 1] = hold;
-            }
-    for (int i = 0; i < N; i++)
-        printf("%4d", a[i]);
-    puts("");
-    printf("\n");
-}
-
+bool aa = 0, bb = 0, cc = 0, dd = 0;
+int seqcounts = 0;
+char state;
 int main()
 {
-    sort();
-    freq();
-    return 0;
+	printf("\n\n\n");
+    for()
+	{
+		if(bb == 1, dd == 1)
+				{
+					seqcounts++;
+					aa = bb = cc = dd = 0;
+				}else if(cc == 1, dd == 1){
+					seqcounts++;
+					aa = bb = cc = dd = 0;
+				}
+		switch(state){
+		case '1':
+			aa = 1;
+			bb = 0;
+			cc = 0;
+			dd = 0;
+			break;
+		case '2':
+			bb = 1;
+			break;
+		case '3':
+			if(aa == 1)
+			{
+				cc = 1;
+			}
+			break;
+		case '4':
+			if(cc == 1)
+			{
+				dd = 1;
+			}else if(bb == 1){
+				dd = 1;
+			}
+			break;
+		default:
+			break;
+		}
+		if(bb == 1, dd == 1)
+				{
+					seqcounts++;
+					aa = bb = cc = dd = 0;
+				}else if(cc == 1, dd == 1){
+					seqcounts++;
+					aa = bb = cc = dd = 0;
+				}
+	}
+	printf("Sequence Counts: ");
+	printf("%d", seqcounts);
+	printf("\n\n\n");
+	return 0;
 }
+
+
+
