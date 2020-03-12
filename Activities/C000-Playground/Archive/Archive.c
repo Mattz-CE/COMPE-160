@@ -1,5 +1,6 @@
 /*  
 **  Author: Matt
+**  Bubble sort with frequencies
 */
 
 #include <stdio.h>
