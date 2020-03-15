@@ -1,87 +1,64 @@
-/*
-**   Assignment:  Laboratory Assignment 01 "Hello World"
-**
-**     Filename:  HelloWorld.c
-**
-**       Author:  Matthew (Haiyi) Zhou
-**        REDID:  823984402
-**
-**  Lab Section:  CompE160 laboratory section number 01
-**       Lab TA:  Name of your designated Teaching Assistant (Atieh Kashani)
-**     Due Date:  Date and time this assignment is due for submission to your teaching assistant
-**
-**  Description:  This program asks the user to guess a number by placing an integer input into the shell
-**  			  and the program replies an output with a true or false check.
-**
-**        Input:  The user inputs number and a yes or no statement
-**
-**       Output:  The string "hello, world" with a newline character.
-**
-**    Algorithm:  The program outputs a true or false check statement.
-**
-**      Caveats:
-**      Version:  1.1
-**
-*/
-
-
-// Randomly generate numbers between 1 and 1000 for user to guess.
+// Randomly generate numbers between 1 and NUM for AI to guess.
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <math.h>
 
 #define SIZE 256
 
-
-void guessGame(void);   // function prototype
+int NUM = 1000;
+int high, low = 0;
+void guessGame(void);	// function prototype
 int isCorrect(int, int); // function prototype
+int solve(int);
+int b = 0; // Bool for low or high
 
 int main(void)
 {
-		srand (time (0)); // seed random number generator
+	printf("Num is?:");
+	scanf("%d", &NUM);
+	srand(time(0)); // seed random number generator
 	guessGame();
 } // end main
 
-// guessGame generates numbers between 1 and 1000
+// guessGame generates numbers between 1 and NUM
 // and checks user's guess
 void guessGame(void)
 {
-	int answer; // randomly generated number
-	int guess; // user's guess
-	int response; // 1 or 2 response to continue game
+	int answer;	// randomly generated number
+	int guess = 0; // user's guess
+	int response;  // 1 or 2 response to continue game
 	char buffer[SIZE];
 	// loop until user types 2 to quit game
-	do {
-		// generate random number between 1 and 1000
-		// 1 is shift, 1000 is scaling factor
-		answer = 1 + rand() % 1000;
-
-		// prompt for guess
-		puts("I have a number between 1 and 1000.\n"
-				"Can you guess my number?\n"
-				"Please type your first guess.");
-		printf("%s", "? ");
-		scanf("%d", &guess);
+	do
+	{
+		// generate random number between 1 and NUM
+		// 1 is shift, NUM is scaling factor
+		answer = 1 + rand() * 600 % NUM;
+		guess = solve(guess);
+		printf("%d\n", guess);
+		int high = NUM;
 
 		// loop until correct number
 		while (!isCorrect(guess, answer))
-			scanf("%d", &guess);
+		{
+			guess = solve(guess);
+			printf("%d, %d", guess, answer);
+		}
 
 		// prompt for another game
 		puts("\nExcellent! You guessed the number!\n"
-				"Would you like to play again?");
-		//      printf("%s", "Please type ( 1=yes, 2=no )? ");
-		//      scanf("%d", &response);
+			 "Would you like to play again?");
 
 		printf("%s", "Please type yes or no: ");
-		getchar(); // read an extra newline from scanf
+		// getchar(); // read an extra newline from scanf
 
 		fgets(buffer, SIZE, stdin);
 		printf("you typed: %s\n", buffer);
-		printf("%d" , answer);
+		printf("%d", answer);
 
-		if(!strncmp(buffer, "yes", 3))
+		if (!strncmp(buffer, "yes", 3))
 			response = 1;
 		else
 			response = 0;
@@ -100,9 +77,33 @@ int isCorrect(int g, int a)
 
 	// guess is incorrect; display hint
 	if (g < a)
-		printf( "%s", "Too low. Try again.\n? " );
+	{
+		printf("%s", "\nToo low. Try again.? \n");
+		b = 0;
+	}
 	else
-		printf( "%s", "Too high. Try again.\n? " );
-
+	{
+		printf("%s", "\nToo high. Try again.? \n");
+		b = 1;
+	}
 	return 0;
 } // end function isCorrect
+
+solve(int temp)
+{
+	int answer;
+	
+	if (temp == 0)
+		answer = round(NUM / 2);
+	else if (b == 0)
+	{
+		answer = temp + ceil((high - temp) / 2);
+		low = temp;
+	}
+	else if (b == 1)
+	{
+		answer = temp - ceil(abs(low - temp) / 2);
+		high = temp;
+	}
+	return answer;
+}

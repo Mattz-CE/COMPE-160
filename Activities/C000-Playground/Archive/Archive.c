@@ -14,8 +14,6 @@
 
 int a[N] = {0};
 
-
-
 void freq()
 {
     int answer;
