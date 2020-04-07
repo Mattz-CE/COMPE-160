@@ -1,5 +1,5 @@
 /*
-**   Assignment:  Laboratory Assignment 08
+**   Assignment:  Laboratory Assignment 09
 **
 **     Filename:  Source.c
 **
@@ -8,7 +8,7 @@
 **
 **  Lab Section:  CompE160 laboratory section number 01
 **       Lab TA:  Atieh Kashanis
-**     Due Date:  March 16nd, 2020
+**     Due Date:  April 13th, 2020
 **
 **  Description:  Calculates current sources f from voltage drop array A[6][4].
 **
